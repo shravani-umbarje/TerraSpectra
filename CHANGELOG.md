@@ -1,17 +1,11 @@
-# Changelog — Shravani (ML Specialist)
+# Changelog — Shravani (Day 2)
 
-## Day 1 — Research Crop Disease ML Approaches
-
+## [Day 2] - 2024-11-12
 ### Added
-- `ml_research.md` — Comprehensive literature review covering traditional ML, deep learning, pitfalls, and evaluation metrics for hyperspectral crop disease detection.
-- `algorithm_comparison.md` — Detailed comparison of Logistic Regression, Random Forest, SVM, XGBoost, and 1D-CNN for 293-sample / 204-band spectral classification.
-- `model_plan.md` — Complete ML pipeline plan including data splitting, cross-validation, class imbalance handling, hyperparameter search, and model serialization.
-- `classification_vs_forecasting.md` — Scientific distinction document clarifying what the Tomato Wilt dataset can and cannot support.
-- `README.md` — Day 1 overview and summary of findings.
-- `TEST_RESULTS.md` — Day 1 testing status.
-- `CHANGELOG.md` — This file.
+- Developed `analyze_labels.py` for comprehensive label auditing across 293 samples.
+- Calculated exact class counts: Level 0 (120), Level 1 (68), Level 2 (39), Level 3 (33), Level 4 (33).
+- Established the critical naive benchmark: 40.96% accuracy (majority class predictor).
+- Derived class weightings: Level 0: 0.488, Level 1: 0.862, Level 2: 1.503, Level 3: 1.776, Level 4: 1.776.
+- Validated Stratified 5-Fold Cross-Validation, ensuring consistent validation representation across all 5 folds.
+- Authored `class_distribution_report.md` specifying evaluation metric hierarchy (Macro F1 over standard Accuracy).
 
-### Research Conclusions
-- Recommended starting with RF/SVM baselines, then XGBoost, then 1D-CNN only if justified.
-- Identified plant-level splitting as critical to avoid data leakage.
-- Confirmed dataset supports classification only (no temporal forecasting).
