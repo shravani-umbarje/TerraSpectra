@@ -1,19 +1,18 @@
-# Shravani — Day 2: Class Label & Distribution Analysis
+# Shravani — Day 3: Leakage-Free Stratified Dataset Splitting Engine
 
 ## Objectives
-- Audit the distribution of the 5 severity classes in the Tomato Bacterial Wilt dataset.
-- Quantify class imbalance (Shannon entropy, majority-to-minority ratio, normalized balance score).
-- Formulate trivial baseline metrics (random guessing, majority class predictor).
-- Design a Stratified 5-Fold Cross-Validation scheme to ensure consistent validation class ratios.
-- Compute balanced class weights for loss penalty in cost-sensitive learning.
+- Implement `DatasetSplitManager` class in `main project/src/models/split_manager.py` and local Day 3 snapshot.
+- Enforce strict Stratified 80/20 partitioning preserving the exact 5-class distribution across train and test sets.
+- Implement automated verification to guarantee zero data leakage between training and testing indices.
+- Establish repeatable random seed protocol (`seed=42`) across cross-validation folds.
 
 ## Deliverables
-- `analyze_labels.py`: Script analyzing label distribution and simulating stratified splitting.
-- `class_distribution_report.md`: In-depth report on class imbalance mitigation and metric selection.
-- `TEST_RESULTS.md`: Verification test output.
-- `CHANGELOG.md`: Progress log from Day 1 to Day 2.
+- `split_manager.py`: Modular splitting manager with leakage verification and summary generation.
+- `test_split_manager.py`: Automated test validating partition sizes, label preservation, and zero-overlap.
+- `TEST_RESULTS.md`: Detailed split distribution execution log.
+- `CHANGELOG.md`: Progress log from Day 2 to Day 3.
 
-## Next Steps (Day 3)
-- Establish unified label encoding (`LabelEncoder`, ordinal mapping).
-- Coordinate feature matrix interface contracts with Meet and Prince.
+## Next Steps (Day 4)
+- Analyze class separation in raw feature space.
+- Construct baseline feature matrix for exploratory modeling.
 
