@@ -1,18 +1,19 @@
-# Shravani — Day 3: Leakage-Free Stratified Dataset Splitting Engine
+# Shravani — Day 4: Multicollinearity Audit & Feature Discriminability
 
 ## Objectives
-- Implement `DatasetSplitManager` class in `main project/src/models/split_manager.py` and local Day 3 snapshot.
-- Enforce strict Stratified 80/20 partitioning preserving the exact 5-class distribution across train and test sets.
-- Implement automated verification to guarantee zero data leakage between training and testing indices.
-- Establish repeatable random seed protocol (`seed=42`) across cross-validation folds.
+- Quantify spectral feature multicollinearity across 180 continuous bands.
+- Prove necessity of dimensionality reduction or regularization (average adjacent Pearson $r = 0.9984$).
+- Perform univariate ANOVA F-tests ($F$-classif) across all 180 wavelengths.
+- Isolate the top biological wavelengths driving disease discrimination.
+- Export ranking table to `main project/reports/tables/wavelength_anova_ranking.csv`.
 
 ## Deliverables
-- `split_manager.py`: Modular splitting manager with leakage verification and summary generation.
-- `test_split_manager.py`: Automated test validating partition sizes, label preservation, and zero-overlap.
-- `TEST_RESULTS.md`: Detailed split distribution execution log.
-- `CHANGELOG.md`: Progress log from Day 2 to Day 3.
+- `multicollinearity_eda.py`: Collinearity and ANOVA feature ranking module.
+- `test_multicollinearity.py`: Automated assertion check on feature ranking output.
+- `feature_space_analysis.md`: Detailed statistical report on collinearity and model architecture implications.
+- `TEST_RESULTS.md`: Output log from statistical tests.
+- `CHANGELOG.md`: Progress log from Day 3 to Day 4.
 
-## Next Steps (Day 4)
-- Analyze class separation in raw feature space.
-- Construct baseline feature matrix for exploratory modeling.
+## Next Steps (Day 5)
+- Prepare clean preprocessed feature matrices with Prince's filtered data for Day 7 baseline training.
 
