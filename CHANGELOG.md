@@ -1,10 +1,10 @@
-# Changelog — Shravani (Day 4)
+# Changelog — Shravani (Day 5)
 
-## [Day 4] - 2024-11-12
+## [Day 5] - 2024-11-12
 ### Added
-- Created `multicollinearity_eda.py` analyzing inter-band correlation and univariate class separability.
-- Discovered 100% of contiguous spectral bands have $r > 0.95$ (mean adjacent $r = 0.9984$), demonstrating severe multicollinearity.
-- Identified primary statistical separation peak at $664.80\text{ nm} - 668.16\text{ nm}$ ($F = 133.79, p < 10^{-63}$, Chlorophyll $a$ absorption pit).
-- Identified secondary statistical separation peak at $936.31\text{ nm} - 949.72\text{ nm}$ ($F = 126.47, p < 10^{-61}$, NIR cellular collapse).
-- Exported complete ranking to `main project/reports/tables/wavelength_anova_ranking.csv`.
+- Developed `prepare_feature_matrices.py` generating canonical ML train/test feature matrices.
+- Enforced strict train-only fitting for all preprocessing transformers to guarantee zero data leakage.
+- Demonstrated that SNV + Savitzky-Golay improves the multi-class Silhouette score from $-0.0180$ to $+0.0313$.
+- Exported binary `.npy` matrices to `main project/data/processed/`.
+- Authored `leakage_prevention_protocol.md` and verified `test_feature_matrices.py`.
 

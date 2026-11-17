@@ -1,19 +1,18 @@
-# Shravani — Day 4: Multicollinearity Audit & Feature Discriminability
+# Shravani — Day 5: Leakage-Free Feature Matrix Preparation
 
 ## Objectives
-- Quantify spectral feature multicollinearity across 180 continuous bands.
-- Prove necessity of dimensionality reduction or regularization (average adjacent Pearson $r = 0.9984$).
-- Perform univariate ANOVA F-tests ($F$-classif) across all 180 wavelengths.
-- Isolate the top biological wavelengths driving disease discrimination.
-- Export ranking table to `main project/reports/tables/wavelength_anova_ranking.csv`.
+- Integrate Meet's preprocessing pipeline into the ML data preparation workflow.
+- Enforce strict leakage-free protocol: fit preprocessing transformers solely on training fold ($N=234$), then transform held-out test fold ($N=59$).
+- Evaluate manifold compactness and class separability via Silhouette coefficients before and after SNV + Savitzky-Golay filtering.
+- Export finalized matrix files (`X_train_processed.npy`, `X_test_processed.npy`, `y_train.npy`, `y_test.npy`) to `main project/data/processed/`.
 
 ## Deliverables
-- `multicollinearity_eda.py`: Collinearity and ANOVA feature ranking module.
-- `test_multicollinearity.py`: Automated assertion check on feature ranking output.
-- `feature_space_analysis.md`: Detailed statistical report on collinearity and model architecture implications.
-- `TEST_RESULTS.md`: Output log from statistical tests.
-- `CHANGELOG.md`: Progress log from Day 3 to Day 4.
+- `prepare_feature_matrices.py`: End-to-end matrix processing and export module.
+- `test_feature_matrices.py`: Automated assertion test checking dimensions, data types, and absence of NaNs.
+- `leakage_prevention_protocol.md`: Mandatory protocol for avoiding data snooping in hyperspectral workflows.
+- `TEST_RESULTS.md`: Output log from unit tests.
+- `CHANGELOG.md`: Progress log from Day 4 to Day 5.
 
-## Next Steps (Day 5)
-- Prepare clean preprocessed feature matrices with Prince's filtered data for Day 7 baseline training.
+## Next Steps (Day 6)
+- Perform feature selection and evaluate PCA dimensionality reduction for baseline model training.
 
