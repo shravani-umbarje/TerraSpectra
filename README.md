@@ -1,18 +1,18 @@
-# Shravani — Day 5: Leakage-Free Feature Matrix Preparation
+# Shravani — Day 6: Feature Space Probing & Candidate Selection
 
 ## Objectives
-- Integrate Meet's preprocessing pipeline into the ML data preparation workflow.
-- Enforce strict leakage-free protocol: fit preprocessing transformers solely on training fold ($N=234$), then transform held-out test fold ($N=59$).
-- Evaluate manifold compactness and class separability via Silhouette coefficients before and after SNV + Savitzky-Golay filtering.
-- Export finalized matrix files (`X_train_processed.npy`, `X_test_processed.npy`, `y_train.npy`, `y_test.npy`) to `main project/data/processed/`.
+- Empirically evaluate 5 candidate feature representations using 5-fold cross-validated linear probing with balanced loss weighting.
+- Compare representations: `raw_180`, `full_bands` (SNV+SG), `pca` (8 dims), `biomarkers` (12 dims), and `hybrid` (20 dims).
+- Measure multi-class performance: Accuracy, Macro F1, and Balanced Accuracy.
+- Formally select the champion feature space for baseline models (Day 7).
 
 ## Deliverables
-- `prepare_feature_matrices.py`: End-to-end matrix processing and export module.
-- `test_feature_matrices.py`: Automated assertion test checking dimensions, data types, and absence of NaNs.
-- `leakage_prevention_protocol.md`: Mandatory protocol for avoiding data snooping in hyperspectral workflows.
-- `TEST_RESULTS.md`: Output log from unit tests.
-- `CHANGELOG.md`: Progress log from Day 4 to Day 5.
+- `evaluate_feature_spaces.py`: Automated 5-fold cross-validation probing module.
+- `test_feature_evaluation.py`: Automated assertion check verifying benchmarking results.
+- `feature_selection_manifesto.md`: Statistical report selecting the 20-D Hybrid feature representation.
+- `TEST_RESULTS.md`: Output test log.
+- `CHANGELOG.md`: Progress log from Day 5 to Day 6.
 
-## Next Steps (Day 6)
-- Perform feature selection and evaluate PCA dimensionality reduction for baseline model training.
+## Next Steps (Day 7)
+- Train baseline classifiers: Logistic Regression, Random Forest, and Support Vector Machine.
 

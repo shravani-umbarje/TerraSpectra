@@ -1,10 +1,13 @@
-# Changelog — Shravani (Day 5)
+# Changelog — Shravani (Day 6)
 
-## [Day 5] - 2024-11-12
+## [Day 6] - 2024-11-12
 ### Added
-- Developed `prepare_feature_matrices.py` generating canonical ML train/test feature matrices.
-- Enforced strict train-only fitting for all preprocessing transformers to guarantee zero data leakage.
-- Demonstrated that SNV + Savitzky-Golay improves the multi-class Silhouette score from $-0.0180$ to $+0.0313$.
-- Exported binary `.npy` matrices to `main project/data/processed/`.
-- Authored `leakage_prevention_protocol.md` and verified `test_feature_matrices.py`.
+- Developed `evaluate_feature_spaces.py` testing 5 candidate input spaces under 5-fold cross-validation.
+- Confirmed that the 20-dimensional `hybrid` feature representation (8 PCA components + 12 Domain Biomarkers) achieves top performance:
+  - CV Accuracy: **$80.54\%$**
+  - CV Macro F1: **$0.7848$**
+  - CV Balanced Accuracy: **$78.80\%$**
+- Outperformed raw 180 bands ($77.15\%$) while reducing dimensionality by **$88.9\%$** ($180 \rightarrow 20$).
+- Exported comparative findings to `main project/reports/tables/feature_space_comparison.csv`.
+- Authored `feature_selection_manifesto.md` and verified `test_feature_evaluation.py`.
 
