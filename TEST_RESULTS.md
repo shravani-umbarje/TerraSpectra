@@ -1,28 +1,33 @@
-# Test Results — Shravani (Day 6)
+# Test Results — Shravani (Day 7)
 
 ## Test Execution Details
-- **Test File**: `test_feature_evaluation.py`
-- **Output Artifact**: `main project/reports/tables/feature_space_comparison.csv`
-- **Result**: ALL TESTS PASSED
+- **Test File**: `test_baselines.py`
+- **Output Artifacts**: `logistic_regression_baseline.joblib`, `random_forest_baseline.joblib`, `support_vector_machine_baseline.joblib`
+- **Result**: ALL ASSERTIONS PASSED
 
 ## Execution Output
 ```text
-=== FEATURE SPACE PROBING (SHRAVANI - DAY 6) ===
-Feature Space    | Dimensions | CV Accuracy  | Macro F1   | Balanced Acc
-------------------------------------------------------------------------
-raw_180          | 180        |  77.15%      |  0.752     |  75.88%
-full_bands       | 180        |  80.21%      |  0.767     |  76.92%
-pca              | 8          |  71.98%      |  0.691     |  69.91%
-biomarkers       | 12         |  76.45%      |  0.735     |  73.88%
-hybrid           | 20         |  80.54%      |  0.785     |  78.80%
+=== BASELINE MODEL TRAINING (SHRAVANI - DAY 7) ===
+Training instances: 234 | Test instances: 59
+Features: 20 (8 PCA + 12 Domain Biomarkers)
 
-Saved feature space benchmark to: D:\Infotact-2\TerraSpectra\main project\reports\tables\feature_space_comparison.csv
-Top performing representation: 'hybrid' with Macro F1 = 0.7848
+===========================================================================
+Model                    | Test Acc   | Macro F1   | Weighted F1  | Balanced Acc
+---------------------------------------------------------------------------
+Logistic Regression      |  77.97%    |  0.771     |  0.780       |  78.81%
+Random Forest            |  83.05%    |  0.851     |  0.825       |  86.43%
+Support Vector Machine   |  72.88%    |  0.705     |  0.725       |  71.79%
+===========================================================================
 
-ALL FEATURE SPACE EVALUATION TESTS PASSED!
+Saved baseline evaluation table to: D:\Infotact-2\TerraSpectra\main project\reports\tables\baseline_model_comparison.csv
+Saved trained models to: D:\Infotact-2\TerraSpectra\main project\models\trained
+
+ALL BASELINE MODEL VALIDATION TESTS PASSED!
 ```
 
-## Scientific Evaluation
-1. **Curse of Dimensionality Mitigated**: Reducing 180 collinear bands to 20 orthogonal + biomarker features eliminates multicollinearity while improving Macro F1 by $+0.033$.
-2. **Domain Knowledge Synergy**: Combining statistical variance (PCA) with biological indices (NDVI, PRI, CI, REP) delivers superior generalization compared to PCA alone ($0.785$ vs $0.691$).
+## Performance Comparison vs Naive Benchmarks
+- Majority Class Predictor: $40.96\%$
+- Random Guessing: $20.00\%$
+- **TerraSpectra Baseline Random Forest: $83.05\%$** ($+42.09\%$ over null baseline)
+- All 3 baseline models achieve $>70\%$ test accuracy and $>0.70$ Macro F1 on untouched test data.
 
