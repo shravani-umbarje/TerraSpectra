@@ -1,24 +1,19 @@
-# Shravani — Day 7: Baseline Machine Learning Implementation
+# Shravani — Day 8: Systematic Hyperparameter Optimization
 
 ## Objectives
-- Implement, train, and benchmark 3 primary baseline classification architectures:
-  1. Multinomial Logistic Regression (`BaselineLogisticRegression`)
-  2. Balanced Random Forest (`BaselineRandomForest`)
-  3. Support Vector Machine with RBF kernel (`BaselineSVM`)
-- Train strictly on the 20-D Hybrid training split ($N=234$) and evaluate on the untouched test split ($N=59$).
-- Save persistent production model artifacts in `main project/models/trained/`.
-- Export metrics benchmark table to `main project/reports/tables/baseline_model_comparison.csv`.
+- Conduct systematic 5-Fold Stratified GridSearchCV optimizing Random Forest and SVM for Macro F1.
+- Tune ensemble hyperparameter space: `n_estimators`, `max_depth`, `min_samples_split`, `max_features`.
+- Tune kernel hyperparameter space: regularization constant `C` and kernel width `gamma`.
+- Persist optimized model weights in `main project/models/trained/`.
+- Export structured experiment log to `main project/models/evaluation/tuning_results.json`.
 
 ## Deliverables
-- `baseline.py`: Logistic Regression baseline.
-- `random_forest.py`: Random Forest ensemble.
-- `svm.py`: Support Vector Machine classifier.
-- `train_baselines.py`: Automated training, evaluation, and serialization pipeline.
-- `test_baselines.py`: Automated assertion check verifying model performance benchmarks.
-- `baseline_evaluation_report.md`: Comparative analysis of baseline models.
+- `tune_models.py`: Automated GridSearchCV tuning script.
+- `test_tuning.py`: Automated test checking persistence and metric thresholds.
+- `hyperparameter_tuning_report.md`: Comparative tuning analysis.
 - `TEST_RESULTS.md`: Output test log.
-- `CHANGELOG.md`: Progress log from Day 6 to Day 7.
+- `CHANGELOG.md`: Progress log from Day 7 to Day 8.
 
-## Next Steps (Day 8)
-- Perform hyperparameter optimization (GridSearchCV / RandomizedSearchCV) for Random Forest and SVM.
+## Next Steps (Day 9)
+- Implement advanced experimental model: 1D-Convolutional Neural Network (1D-CNN) tailored for spectral sequences.
 

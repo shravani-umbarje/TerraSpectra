@@ -1,14 +1,11 @@
-# Changelog — Shravani (Day 7)
+# Changelog — Shravani (Day 8)
 
-## [Day 7] - 2024-11-12
+## [Day 8] - 2024-11-12
 ### Added
-- Implemented `BaselineLogisticRegression`, `BaselineRandomForest`, and `BaselineSVM` in `main project/src/models/`.
-- Trained all 3 models on the 20-D Hybrid feature matrix ($N=234$) with balanced class loss weighting.
-- Evaluated on the held-out test set ($N=59$):
-  - **Random Forest:** **$83.05\%$** Test Accuracy, **$0.851$** Macro F1, **$86.43\%$** Balanced Accuracy (Leader).
-  - **Logistic Regression:** $77.97\%$ Test Accuracy, $0.771$ Macro F1, $78.81\%$ Balanced Accuracy.
-  - **Support Vector Machine:** $72.88\%$ Test Accuracy, $0.705$ Macro F1, $71.79\%$ Balanced Accuracy.
-- Saved model artifacts to `main project/models/trained/`.
-- Exported comparative evaluation table to `main project/reports/tables/baseline_model_comparison.csv`.
-- Authored and verified `test_baselines.py`.
+- Developed `tune_models.py` performing exhaustive 5-fold Stratified GridSearchCV across 48 parameter configurations for Random Forest and 25 configurations for SVM.
+- Discovered optimal Random Forest hyperparameter set: `max_depth=6`, `max_features='sqrt'`, `min_samples_split=3`, `n_estimators=200` (CV Macro F1 = **$0.8017$**).
+- Discovered optimal SVM hyperparameter set: `C=5.0`, `gamma='auto'` (CV Macro F1 = **$0.8384$**), boosting SVM test accuracy from $72.88\%$ to $76.27\%$.
+- Persisted `random_forest_optimized.joblib` and `svm_optimized.joblib`.
+- Exported JSON experiment logs to `main project/models/evaluation/tuning_results.json`.
+- Authored `hyperparameter_tuning_report.md` and verified `test_tuning.py`.
 
